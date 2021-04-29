@@ -8,14 +8,17 @@
 
         // Sliders (control and content)
         &__sliders {
-            display: flex;
-            justify-content: space-between;
             margin-top: 32px;
             @include bp($bp-col8) {
                 margin-top: 56px;
             }
             @include bp($bp-col12) {
+                display: flex;
+                align-items: stretch;
+                justify-content: space-between;
+                flex-wrap: nowrap;
                 margin-top: 80px;
+                padding: 0 12px;
             }
             @include bp($bp-col16) {
                 margin-top: 116px;
@@ -23,16 +26,31 @@
         }
         // Vertical slider
         .vertical-slides {
-            @include bp($bp-col8) {
+            @include bp($bp-col12) {
+                max-width: 391px;
                 min-width: 391px;
                 margin-right: 36px;
             }
             .vslide {
-                border-right: 2px solid $brown;
                 padding: 18px 0;
                 opacity: 0.4;
                 cursor: pointer;
                 transition: all 0.3s ease;
+                display: none;
+                border-bottom: 2px solid $brown;
+                max-width: 90%;
+                margin: 0 auto 12px;
+                &:first-child {
+                    display: block;
+                }
+                @include bp($bp-col12) {
+                    display: block;
+                    max-width: unset;
+                    margin: 0;
+                    border-right: 2px solid $brown;
+                    border-bottom: none;
+                    padding: 28px 0;
+                }
                 &.active {
                     opacity: 1;
                 }
@@ -65,41 +83,58 @@
             }
         }
         .content-slides {
+            @include bp($bp-col8) {
+                max-width: 90%;
+                margin: auto;
+            }
+            @include bp($bp-col12) {
+                max-width: unset;
+            }
             .cslide {
                 position: relative;
                 display: grid;
                 align-items: center;
                 gap: 25px;
-                @include bp($bp-col8) {
+                @include bp($bp-col12) {
                     grid-template-columns: repeat(2, 1fr);
+                }
+                &-img-container {
+                    height: 100%;
                 }
                 &-img {
                     width: 100%;
+                    height: 100%;
                     max-height: 495px;
                     object-fit: cover;
+                    object-position: 20% center;
                 }
                 &-content {
                     background-color: #f9f7f1;
                     position: relative;
                     padding: 24px;
+                    top: -100px;
+                    max-width: 90%;
+                    margin: auto;
                     @include bp($bp-col8) {
                         padding: 32px;
-                        width: 115%;
-                        left: -15%;
                     }
                     @include bp($bp-col12) {
-                        padding: 48px;
+                        width: 115%;
+                        max-width: unset;
+                        left: -15%;
+                        top: 0;
+                        margin: unset;
                     }
-                    @include bp($bp-col16) {
+                    @media (min-width: 1400px) {
                         padding: 62px;
                     }
                 }
                 &-title {
                     text-align: left;
-                    @include bp($bp-col8) {
+                    @include bp($bp-col12) {
                         font-size: 40px;
                     }
-                    @include bp($bp-col12) {
+                    @include bp($bp-col16) {
                         font-size: 50px;
                     }
                 }
