@@ -1,0 +1,91 @@
+
+// ===== BREAKPOINTS / MEDIA LIMITS
+// ================================================================================
+
+// Primary Breakpoints
+$bp-col4:  0;
+$bp-col8:  640px;
+$bp-col12: 960px;
+$bp-col16: 1280px;
+
+// Secondary Breakpoints (1px < primary)
+$bp-col4-max:  $bp-col8 - 1;
+$bp-col8-max:  $bp-col12 - 1;
+$bp-col12-max: $bp-col16 - 1;
+
+// Human-Readable
+$desktop: $bp-col12;
+$tablet: 720px;
+$desktopLarge: $bp-col16;
+$desktopExtraLarge: 1400px;
+
+
+
+// ===== FONTS
+// ================================================================================
+
+$font-serif: 'Mrs Eaves', 'Hoefler Text', Georgia, serif;
+$font-sans-serif: 'Trade Gothic', 'Helvetica Neue', Arial, sans-serif;
+
+$serif-stack: 'Hoefler Text', Georgia, serif;
+$sans-serif-stack: 'Helvetica Neue', Arial, sans-serif;
+
+$serif: $font-serif;
+$sans-serif: $font-sans-serif;
+
+$icon: 'icomoon';
+$old: 'Old Standard TT', serif;
+$helvetica: 'Helvetica Neue', Arial, sans-serif;
+
+
+
+// ===== COLORS
+// ================================================================================
+
+// New
+$color-gold:      #86764D;
+$color-green:     #8C9458;
+$color-greenDark: #5E662D;
+$color-greyLite:  #E9E9E9;
+$color-navy:      #27313D;
+$color-navyDark:  #000818;
+$color-black:     $color-navy;
+$color-slate:     #383A42;
+$color-parchment: #FAF7F2;
+
+// Legacy
+$red:			#b8482d;
+$green: 		#7b8253;
+$greenDark: 	$color-greenDark;
+$greenLight:	#a3aa7d;
+$greenAltLight: #bbc4c0;
+$blue: 			#585a63;
+$blueDark: 		$color-slate;
+$blueLight:		#a0a2ac;
+$blueAlt: 		#454851;
+$blueAltDark: 	#24262d;
+$blueAltLight: 	#73757d;
+$orange: 		#b8482d;
+$brown: 		#5b4d29;
+$brownDark: 	$color-gold;
+$brownLight: 	#a09067;
+$tan: 			#e0d9c6;
+$tanDark: 		#c5b99a;
+$tanLight: 		#f5f1e8;
+$grey: 			$color-greyLite;
+$greyDark: 		#b3b3b8;
+$greyLight: 	#f2f2f2;
+$white: 		#ffffff;
+
+$parGold: 	#9c8206;
+$parBlue: 	#16227c;
+$parWhite: 	#595959;
+$parGreen: 	#256509;
+$parRed: 	#9c0629;
+
+$markerBorder:	#22232a;
+$markerHover:	#54565d;
+
+// New Colors Added 06/2017
+$gold: #96855a;
+$cream: #f3f1e2;

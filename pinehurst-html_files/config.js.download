@@ -1,0 +1,3 @@
+
+window[window["TiktokAnalyticsObject"]].instance("BUE4VG7GFRCQDCALSS6G").setAdvancedMatchingAvailableProperties({"email":false,"phone_number":false});
+window[window["TiktokAnalyticsObject"]].instance("BUE4VG7GFRCQDCALSS6G").setPixelInfo && window[window["TiktokAnalyticsObject"]].instance("BUE4VG7GFRCQDCALSS6G").setPixelInfo({status: 0, name: "Pinehurst Resort - Pixel", advertiserID: "6880132599008722945", setupMode: 0, partner: ""});

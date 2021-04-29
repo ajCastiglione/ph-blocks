@@ -1,0 +1,94 @@
+// ===== COMPONENT:  DATEPICKER
+// ================================================================================
+
+var componentDatePicker = {
+	dateCurrent: new Date(),
+	dateMax: null,
+	config: {
+		default: {
+			format: 'mm/dd/yyyy',
+			formatSubmit: 'mm/dd/yyyy',
+			hiddenSuffix: '_pickadate',
+			min: 3,
+		},
+		range: {
+			format: 'mm/dd/yyyy',
+			formatSubmit: 'mm/dd/yyyy',
+			hiddenSuffix: '',
+			min: 3,
+			max: null, // set later
+			onClose: function() {
+				var d = Date.parse(this.get());
+				var v = (d) ? new Date(d) : false;
+				var isAvailability = (this.$node.closest('form.form-reservation').length > 0);
+				var parent_node = (isAvailability) ? $('body') : this.$node.closest('.daterange');
+				if(this.$node.hasClass('start')) {
+					// Set value of ALL range "start" date pickers.
+					if(isAvailability) {
+						$('input.datepicker.range.start').not(this.$node).val( this.$node.val());
+					}
+					// Update one or ALL "end" date pickers to not allow dates before the "start" date.
+					if(v === false) {
+						v = '0';
+					}
+					parent_node.find('input.datepicker.range.end').each(function() {
+						// $(this).pickadate('picker').set( 'min', v );
+						var end =  new Date($(this).val());
+						if(v > end) {
+							$(this).pickadate('picker').clear();
+							$(this).focus();
+							$(this).next().find('.picker__day--highlighted').removeClass('picker__day--highlighted');
+						} else if($(this).val().length === 0) {
+							$(this).focus();
+						}
+					});
+				} else {
+					// Set value of ALL range "end" date pickers.
+					if(isAvailability) {
+						$('input.datepicker.range.end').not(this.$node).val( this.$node.val());
+					}
+					// Update one or ALL "start" date pickers to not allow dates after the "end" date.
+					parent_node.find('input.datepicker.range.start').each(function() {
+						// $(this).pickadate('picker').set( 'max', v );
+						var start =  new Date($(this).val());
+						if(v < start) {
+							$(this).pickadate('picker').clear();
+							$(this).focus();
+							$(this).next().find('.picker__day--highlighted').removeClass('picker__day--highlighted');
+						} else if($(this).val().length === 0) {
+							$(this).focus();
+						}
+					});
+				}
+			}
+		}
+	},
+
+	init: function() {
+		this.bindEvents();
+		this.configPickadate();
+		this.initPickadate();
+	},
+	bindEvents: function() {
+		$(document).on('gform_post_render', function() {
+			componentDatePicker.initPickadate();
+		});
+	},
+
+	// Initialize Pickadate
+	initPickadate: function() {
+		$('input.datepicker:not(.range,.picker__input)').pickadate(this.config.default);
+		$('input.datepicker.range:not(.picker__input)').pickadate(this.config.range);
+	},
+
+	// Finalize the Pickadate configuration settings
+	configPickadate: function() {
+		// Configure the maximum date for the Pickadate instance
+		var dc = new Date(JSON.parse(JSON.stringify(this.dateCurrent)));
+		this.dateMax = dc.setMonth(dc.getMonth() + 10);
+		this.dateMax = dc.setDate(0); // last date of previous month (relative to "dc" variable)
+		this.dateMax = new Date(this.dateMax);
+		this.config.range.max = this.dateMax;
+	}
+};
+componentDatePicker.init();

@@ -1,0 +1,123 @@
+.block-vertical-slider {
+    .vertical-slider {
+        max-width: $desktopExtraLarge;
+        margin: auto;
+        &__title {
+            color: $color-greenDark;
+        }
+
+        // Sliders (control and content)
+        &__sliders {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 32px;
+            @include bp($bp-col8) {
+                margin-top: 56px;
+            }
+            @include bp($bp-col12) {
+                margin-top: 80px;
+            }
+            @include bp($bp-col16) {
+                margin-top: 116px;
+            }
+        }
+        // Vertical slider
+        .vertical-slides {
+            @include bp($bp-col8) {
+                min-width: 391px;
+                margin-right: 36px;
+            }
+            .vslide {
+                border-right: 2px solid $brown;
+                padding: 18px 0;
+                opacity: 0.4;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                &.active {
+                    opacity: 1;
+                }
+                &:hover:not(.active) {
+                    opacity: 0.7;
+                }
+                &-title {
+                    text-align: left;
+                    color: #968559;
+                    font-size: 22px;
+                    text-transform: uppercase;
+                    font-weight: bold;
+                    letter-spacing: 1.65px;
+                }
+                &-desc {
+                    text-align: left;
+                    max-width: 100%;
+                    font-size: 30px;
+                    line-height: 30px;
+                    max-width: 360px;
+                    margin: 0;
+                    font-family: $font-serif;
+                    text-transform: uppercase;
+                    letter-spacing: 4.5px;
+                    @include bp($bp-col12) {
+                        font-size: 35px;
+                        line-height: 35px;
+                    }
+                }
+            }
+        }
+        .content-slides {
+            .cslide {
+                position: relative;
+                display: grid;
+                align-items: center;
+                gap: 25px;
+                @include bp($bp-col8) {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+                &-img {
+                    width: 100%;
+                    max-height: 495px;
+                    object-fit: cover;
+                }
+                &-content {
+                    background-color: #f9f7f1;
+                    position: relative;
+                    padding: 24px;
+                    @include bp($bp-col8) {
+                        padding: 32px;
+                        width: 115%;
+                        left: -15%;
+                    }
+                    @include bp($bp-col12) {
+                        padding: 48px;
+                    }
+                    @include bp($bp-col16) {
+                        padding: 62px;
+                    }
+                }
+                &-title {
+                    text-align: left;
+                    @include bp($bp-col8) {
+                        font-size: 40px;
+                    }
+                    @include bp($bp-col12) {
+                        font-size: 50px;
+                    }
+                }
+                &-btn {
+                    display: inline-block;
+                    text-transform: uppercase;
+                    font-size: 15px;
+                    border: 2px solid #000;
+                    font-weight: bold;
+                    color: #000;
+                    padding: 10px 24px;
+                    &:hover {
+                        background-color: #000;
+                        color: $white;
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+    }
+}
