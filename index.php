@@ -4,7 +4,10 @@
 
 /* BLOCKS START HERE */
 <link rel="stylesheet" href="<?= './library/css/main.css'; ?>">
-<?php require 'block-vertical-slider.php'; ?>
+<?php 
+require 'block-vertical-slider.php'; 
+require 'block-content-media.php';
+?>
 
 /* Footer below this point */
 <?php require 'footer.php'; ?>
